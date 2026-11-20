@@ -2,7 +2,7 @@ name: Importar nova versão do site
 on:
   push:
     paths:
-      - 'site-update.zip'
+      - 'site-update.part-*'
   workflow_dispatch:
 permissions:
   contents: write
@@ -17,7 +17,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s site-update.zip
+          test -s site-update.part-01
+          test -s site-update.part-02
+          test -s site-update.part-03
+          cat site-update.part-01 site-update.part-02 site-update.part-03 > site-update.zip
           python3 - <<'PY'
           from pathlib import Path
           from zipfile import ZipFile
