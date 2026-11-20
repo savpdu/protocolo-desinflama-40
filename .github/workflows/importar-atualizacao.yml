@@ -1,0 +1,50 @@
+name: Importar nova versão do site
+on:
+  push:
+    paths:
+      - 'site-update.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Extrair página e imagens enviadas
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s site-update.zip
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          from html.parser import HTMLParser
+          with ZipFile('site-update.zip') as z:
+              names=z.namelist()
+              assert 'index.html' in names, 'Pacote sem index.html'
+              html=z.read('index.html').decode('utf-8')
+              class Images(HTMLParser):
+                  def __init__(self): super().__init__(); self.paths=[]
+                  def handle_starttag(self, tag, attrs):
+                      if tag=='img':
+                          src=dict(attrs).get('src','')
+                          if src.startswith('/src/assets/') or src.startswith('/assets/'):
+                              self.paths.append(src.lstrip('/'))
+              p=Images();p.feed(html)
+              assert p.paths, 'Sem imagens locais na pagina'
+              for path in set(p.paths):
+                  assert path in names, f'Imagem ausente no pacote: {path}'
+              for path in ['index.html', *sorted(set(p.paths))]:
+                  target=Path(path)
+                  target.parent.mkdir(parents=True,exist_ok=True)
+                  target.write_bytes(z.read(path))
+              print('Arquivos importados:', len(set(p.paths)), 'imagens e HTML')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html src/assets/images assets/aistudio
+          git commit -m "Atualizar pagina de vendas com imagens da nova versao" || exit 0
+          git push
