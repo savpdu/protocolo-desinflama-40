@@ -47,16 +47,19 @@
     .section-title { font-size: clamp(24px, 3.6vw, 36px); font-weight: 800; text-align: center; color: #000000; margin-bottom: 10px; text-wrap: balance; }
     .section-sub { text-align: center; color: #374151; font-size: 15px; max-width: 640px; margin: 0 auto 30px; }
 
-    .pain-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 640px) { .pain-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .pain-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
-    .pain-card { background: #FFF5F5; border: 2px solid #F3DCDC; border-radius: 16px; overflow: hidden; text-align: left; padding: 0; transition: all 0.2s; }
+    .pain-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    @media (min-width: 640px) { .pain-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+    @media (min-width: 900px) { .pain-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+    .pain-card { background: #FFF5F5; border: 2px solid #F3DCDC; border-radius: 14px; overflow: hidden; text-align: left; padding: 0; transition: all 0.2s; display: flex; flex-direction: row; align-items: center; }
+    @media (min-width: 640px) { .pain-card { flex-direction: column; align-items: stretch; } }
     .pain-card.active { background: #F2FBF5; border-color: #0E5A3D; box-shadow: 0 8px 20px rgba(14,90,61,0.12); }
-    .pain-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; }
-    .pain-card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .pain-check { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 8px; background: #fff; border: 2px solid #d1d5db; display: flex; align-items: center; justify-content: center; font-weight: 800; color: transparent; }
+    .pain-card-img { position: relative; width: 92px; height: 92px; flex-shrink: 0; overflow: hidden; }
+    @media (min-width: 640px) { .pain-card-img { width: 100%; height: 156px; } }
+    .pain-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .pain-check { position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border-radius: 7px; background: #fff; border: 2px solid #d1d5db; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: transparent; }
     .pain-card.active .pain-check { background: #00C853; border-color: #0E5A3D; color: #032614; }
-    .pain-card-body { padding: 14px 16px; font-size: 16px; font-weight: 700; color: #000000; display: flex; align-items: center; gap: 10px; }
+    .pain-card-body { padding: 10px 12px; font-size: 14px; font-weight: 700; color: #000000; display: flex; align-items: center; gap: 8px; flex: 1; }
+    @media (min-width: 640px) { .pain-card-body { padding: 12px 14px; font-size: 15px; } }
     .pain-alert { margin: 28px auto 0; max-width: 680px; background: #FFF0E5; border: 2px solid #FF6B00; border-radius: 16px; padding: 20px; text-align: center; font-size: clamp(18px, 2.5vw, 22px); font-weight: 800; color: #000000; }
 
     .villain-wrap { position: relative; max-width: 560px; margin: 0 auto 28px; border-radius: 18px; overflow: hidden; border: 2px solid #fecaca; box-shadow: 0 10px 26px rgba(0,0,0,0.08); }
@@ -68,17 +71,18 @@
     .villain-box h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; color: #000; }
     .villain-box p { font-size: 14px; color: #374151; }
 
-    .solution-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
-    @media (min-width: 860px) { .solution-grid { grid-template-columns: 1fr 1fr; } }
-    .solution-img { border-radius: 18px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 10px 26px rgba(0,0,0,0.08); }
-    .solution-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
-    .check-list li { background: #F6FCF8; border: 1px solid #CBEAD5; border-radius: 12px; padding: 14px 16px; font-weight: 700; font-size: 16px; color: #000; display: flex; align-items: center; gap: 10px; }
+    .solution-grid { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; }
+    @media (min-width: 860px) { .solution-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+    .solution-img { max-width: 380px; margin: 0 auto; width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid #e5e7eb; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+    .solution-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; }
+    @media (min-width: 860px) { .solution-img { max-width: none; } }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .check-list li { background: #F6FCF8; border: 1px solid #CBEAD5; border-radius: 10px; padding: 10px 12px; font-weight: 700; font-size: 14px; color: #000; display: flex; align-items: center; gap: 8px; }
 
     .testi-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
     @media (min-width: 768px) { .testi-grid { grid-template-columns: repeat(3, 1fr); } }
     .testi-card { background: #fff; border: 1px solid #F3DCDC; border-radius: 18px; padding: 24px; text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04); }
-    .testi-card img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; border: 4px solid #0E5A3D; }
+    .testi-card img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: top; margin: 0 auto 14px; border: 4px solid #0E5A3D; }
     .testi-card p.quote { font-size: 17px; font-weight: 700; color: #000; margin-bottom: 10px; }
     .testi-card p.author { font-size: 14px; font-weight: 700; color: #0E5A3D; }
 
@@ -87,7 +91,7 @@
     .bonus-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
     @media (min-width: 768px) { .bonus-grid { grid-template-columns: repeat(3, 1fr); } }
     .bonus-card { background: #09432D; border: 1px solid rgba(255,255,255,0.2); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,0.2); }
-    .bonus-card img { width: 100%; aspect-ratio: 2/3; object-fit: cover; }
+    .bonus-card img { width: 168px; aspect-ratio: 2/3; object-fit: cover; margin: 20px auto 0; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.28); }
     .bonus-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
     .bonus-tag { font-size: 12px; font-weight: 800; color: #FEF08A; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
     .bonus-title { font-size: 19px; font-weight: 800; color: #ffffff; line-height: 1.3; margin-bottom: 8px; }
@@ -97,25 +101,34 @@
     .bonus-price span { color: #00E676; }
     .bonus-total { margin: 28px auto 0; max-width: 780px; background: #09432D; border: 2px solid #00C853; border-radius: 18px; padding: 22px 18px; text-align: center; font-size: clamp(20px, 3vw, 28px); font-weight: 800; color: #ffffff; line-height: 1.3; font-variant-numeric: tabular-nums; }
 
-    .offer-box { max-width: 560px; margin: 0 auto; background: #FEF9C3; border: 4px solid #0E5A3D; border-radius: 24px; padding: 30px 20px; text-align: center; box-shadow: 0 18px 36px rgba(0,0,0,0.1); }
-    .offer-kicker { color: #FF6B00; font-weight: 800; font-size: 14px; margin-bottom: 6px; }
-    .offer-old { font-size: 20px; font-weight: 700; color: #374151; }
+    .offer-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 960px; margin: 0 auto; align-items: stretch; }
+    @media (min-width: 860px) { .offer-grid { grid-template-columns: 1fr 1fr; } }
+    .offer-basic { background: #ffffff; border: 2px solid #d1d5db; border-radius: 24px; padding: 28px 20px; text-align: center; box-shadow: 0 8px 22px rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: space-between; }
+    .offer-box { background: #FEF9C3; border: 4px solid #0E5A3D; border-radius: 24px; padding: 28px 20px; text-align: center; box-shadow: 0 18px 36px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; }
+    .offer-kicker { color: #FF6B00; font-weight: 800; font-size: 13px; margin-bottom: 6px; }
+    .offer-old { font-size: 18px; font-weight: 700; color: #374151; }
     .offer-old span { text-decoration: line-through; color: #dc2626; }
-    .offer-price { font-size: 56px; font-weight: 800; color: #0E5A3D; line-height: 1.05; margin: 6px 0; font-variant-numeric: tabular-nums; }
-    .offer-install { font-size: 18px; font-weight: 700; color: #000; margin-bottom: 18px; }
+    .offer-price { font-size: 52px; font-weight: 800; color: #0E5A3D; line-height: 1.05; margin: 6px 0; font-variant-numeric: tabular-nums; }
+    .offer-install { font-size: 17px; font-weight: 700; color: #000; margin-bottom: 14px; }
     .offer-includes { text-align: left; list-style: none; display: flex; flex-direction: column; gap: 8px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid #fde047; font-size: 14px; font-weight: 600; color: #111827; }
     .offer-includes li { display: flex; align-items: flex-start; gap: 8px; }
-    .offer-timer { display: inline-block; background: #FF6B00; color: #fff; padding: 10px 18px; border-radius: 10px; font-weight: 800; font-size: 15px; margin-bottom: 22px; font-variant-numeric: tabular-nums; }
+    .offer-today { display: inline-block; background: #FF6B00; color: #fff; padding: 8px 16px; border-radius: 10px; font-weight: 800; font-size: 13px; margin-bottom: 18px; }
+    .btn-basic { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 56px; padding: 14px 20px; border-radius: 14px; border: none; background: #0E5A3D; color: #ffffff; font-size: 17px; font-weight: 800; transition: background 0.2s; }
+    .btn-basic:hover { background: #0B4730; }
     .seals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px; padding-top: 16px; border-top: 1px solid #fde047; font-size: 12px; font-weight: 700; color: #111827; }
+    .modal-backdrop { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,0.72); display: none; align-items: center; justify-content: center; padding: 16px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-card { position: relative; background: #FEF9C3; border: 4px solid #0E5A3D; border-radius: 24px; max-width: 460px; width: 100%; max-height: 92vh; overflow-y: auto; padding: 26px 20px; text-align: center; box-shadow: 0 24px 48px rgba(0,0,0,0.35); }
+    .modal-close { position: absolute; top: 12px; right: 14px; background: transparent; border: none; font-size: 22px; font-weight: 800; color: #374151; }
 
-    .guarantee-box { max-width: 740px; margin: 0 auto; background: #fff; border: 1px solid #F3DCDC; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+    .guarantee-box { max-width: 740px; margin: 0 auto; background: #FFF5F5; border: 1px solid #F3DCDC; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
     @media (min-width: 640px) { .guarantee-box { flex-direction: row; text-align: left; } }
-    .guarantee-box img { width: 150px; height: 150px; object-fit: contain; flex-shrink: 0; }
+    .guarantee-box img { width: 150px; height: 150px; object-fit: contain; flex-shrink: 0; border-radius: 14px; background: #fff; }
     .guarantee-box h2 { font-size: 24px; font-weight: 800; color: #0E5A3D; margin-bottom: 8px; }
     .guarantee-box p { font-size: 17px; font-weight: 500; color: #1f2937; }
 
     .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-    .faq-item { border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; background: #FFF5F5; }
+    .faq-item { border: 1px solid #F3DCDC; border-radius: 14px; overflow: hidden; background: #ffffff; }
     .faq-q { width: 100%; background: transparent; border: none; padding: 18px; text-align: left; font-size: 17px; font-weight: 700; color: #000; display: flex; justify-content: space-between; align-items: center; }
     .faq-a { display: none; background: #fff; padding: 14px 18px 18px; font-size: 15px; font-weight: 500; color: #1f2937; border-top: 1px solid #f3f4f6; }
     .faq-item.open .faq-a { display: block; }
@@ -149,9 +162,9 @@
       <h1>Você acorda com o corpo <span class="orange">TRAVADO, INCHADA</span> e sem energia? NÃO é a sua idade. É <span class="green">INFLAMAÇÃO.</span></h1>
       <p class="sub">O <strong>Protocolo Desinflama 40+</strong> já ajudou milhares de mulheres a desinchar em 21 dias, comendo o que já tem em casa.</p>
       <div class="hero-img-wrap">
-        <img src="/assets/aistudio/image_9759e3d2.webp" alt="Mulher brasileira de 45 anos no espelho pela manhã" />
+        <img src="/assets/aistudio/image_1ad67ebf.png" alt="Mulher brasileira sentada na cama pela manhã sentindo dor no joelho e barriga inchada" style="object-position:top;" />
       </div>
-      <a href="#comprar" class="btn-cta">QUERO DESINCHAR AGORA - SÓ R$27</a>
+      <a href="#comprar" class="btn-cta">SIM, QUERO DESINCHAR AGORA</a>
       <p class="hero-badges">✅ Acesso imediato | ✅ Garantia de 7 dias | ✅ +3.214 mulheres já começaram</p>
     </div>
   </section>
@@ -196,9 +209,10 @@
       <p class="section-sub">Passo a passo prático de 21 dias com comida simples que você já tem em casa.</p>
       <div class="solution-grid">
         <div class="solution-img">
-          <img src="/src/assets/images/solucao_protocolo_mockup_1795088986067.jpg" alt="Mockup Ebook + Celular + Lista de Compras" />
+          <img src="/assets/aistudio/Mulher_mostra_e-book_enquanto_escreve_e87d3e52.png" alt="Mulher brasileira sorrindo segurando o tablet com o e-book Protocolo Desinflama 40+ enquanto preenche o cardápio de 21 dias e a lista de compras" />
         </div>
         <div>
+          <h3 style="font-size:18px;font-weight:800;color:#0E5A3D;margin-bottom:10px;">Tudo o que você recebe hoje:</h3>
           <ul class="check-list">
             <li>✅ Guia Completo de 21 Dias em PDF</li>
             <li>✅ 15 Receitas Desinflamantes de 15 min</li>
@@ -206,19 +220,8 @@
             <li>✅ 5 Vídeos de Aplicação Rápida</li>
             <li>✅ Checklist Diário + Bônus Visão e Articulações</li>
           </ul>
-          <a href="#comprar" class="btn-cta">QUERO DESINCHAR AGORA - SÓ R$27</a>
+          <a href="#comprar" class="btn-cta">SIM, QUERO DESINCHAR AGORA</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-rose">
-    <div class="container">
-      <h2 class="section-title">Depoimentos de quem já aplicou</h2>
-      <div class="testi-grid">
-        <div class="testi-card"><img src="/src/assets/images/depoimento_maria_1795088985139.jpg" alt="Maria, Curitiba" /><p class="quote">"Em 7 dias já desinchei, meu joelho parou de doer"</p><p class="author">Maria, 52, Curitiba</p></div>
-        <div class="testi-card"><img src="/src/assets/images/depoimento_rosana_1795088985509.jpg" alt="Rosana, Belo Horizonte" /><p class="quote">"Minha barriga desinchou e voltei a ter energia"</p><p class="author">Rosana, 47, Belo Horizonte</p></div>
-        <div class="testi-card"><img src="/src/assets/images/depoimento_cleide_1795088985718.jpg" alt="Cleide, Goiânia" /><p class="quote">"Eu achava que era idade, era inflamação"</p><p class="author">Cleide, 58, Goiânia</p></div>
       </div>
     </div>
   </section>
@@ -228,7 +231,7 @@
       <h2 class="section-title">E SE VOCÊ COMPRAR HOJE, VOCÊ LEVA 3 BÔNUS GRÁTIS</h2>
       <div class="bonus-grid">
         <div class="bonus-card">
-          <img src="/assets/aistudio/Capa_premium_vinho_e_dourado_fb5f0056.webp" alt="Capa Bônus 1 - Chá Seca-Barriga da Noite" />
+          <img src="/assets/aistudio/Capa_premium_vinho_e_dourado_fb5f0056.png" alt="Capa Bônus 1 - Chá Seca-Barriga da Noite" />
           <div class="bonus-body">
             <p class="bonus-tag">Bônus 1</p>
             <h3 class="bonus-title">Chá Seca-Barriga da Noite</h3>
@@ -237,7 +240,7 @@
           </div>
         </div>
         <div class="bonus-card">
-          <img src="/assets/aistudio/Capa_vinho_premium_com_detalhes_dourados_fc1403cb.webp" alt="Capa Bônus 2 - Lista Negra dos 27 Alimentos Que Te Inflamam" />
+          <img src="/assets/aistudio/Capa_vinho_premium_com_detalhes_dourados_fc1403cb.png" alt="Capa Bônus 2 - Lista Negra dos 27 Alimentos Que Te Inflamam" />
           <div class="bonus-body">
             <p class="bonus-tag">Bônus 2</p>
             <h3 class="bonus-title">Lista Negra dos 27 Alimentos Que Te Inflamam</h3>
@@ -246,7 +249,7 @@
           </div>
         </div>
         <div class="bonus-card">
-          <img src="/assets/aistudio/Capa_premium_vinho_e_dourado-1_286b6823.webp" alt="Capa Bônus 3 - Protocolo Visão Nítida 40+" />
+          <img src="/assets/aistudio/Capa_premium_vinho_e_dourado-1_286b6823.png" alt="Capa Bônus 3 - Protocolo Visão Nítida 40+" />
           <div class="bonus-body">
             <p class="bonus-tag">Bônus 3</p>
             <h3 class="bonus-title">Protocolo Visão Nítida 40+</h3>
@@ -255,40 +258,83 @@
           </div>
         </div>
       </div>
-      <div class="bonus-total">TOTAL EM BÔNUS: <span style="color:#FEF08A">R$151</span> - VOCÊ PAGA SÓ <span style="color:#00E676">R$27</span> E LEVA TUDO</div>
+      <div class="bonus-total">TOTAL EM BÔNUS: <span style="color:#FEF08A">R$151</span> - VOCÊ LEVA HOJE <span style="color:#00E676">TUDO GRÁTIS</span></div>
     </div>
   </section>
 
   <section class="section" id="comprar">
     <div class="container">
-      <div class="offer-box">
-        <p class="offer-kicker">OFERTA ESPECIAL POR TEMPO LIMITADO</p>
-        <h2 style="font-size:20px;font-weight:800;color:#000;margin-bottom:14px;">Veja tudo o que você vai levar hoje:</h2>
-        <ul class="offer-includes">
-          <li><span>✅</span><span>Guia Completo de 21 Dias em PDF</span></li>
-          <li><span>✅</span><span>15 Receitas Desinflamantes de 15 min</span></li>
-          <li><span>✅</span><span>Cardápio de 21 Dias + Lista de Compras Pronta</span></li>
-          <li><span>✅</span><span>5 Vídeos de Aplicação Rápida</span></li>
-          <li><span>✅</span><span>Checklist Diário + Bônus Visão e Articulações</span></li>
-          <li><span>🎁</span><span><strong>Bônus 1:</strong> Chá Seca-Barriga da Noite <s style="color:#6b7280;font-size:12px;">(R$47)</s> <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
-          <li><span>🎁</span><span><strong>Bônus 2:</strong> Lista Negra dos 27 Alimentos Que Te Inflamam <s style="color:#6b7280;font-size:12px;">(R$37)</s> <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
-          <li><span>🎁</span><span><strong>Bônus 3:</strong> Protocolo Visão Nítida 40+ <s style="color:#6b7280;font-size:12px;">(R$67)</s> <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
-        </ul>
-        <p class="offer-old">DE <span>R$97</span> POR APENAS</p>
-        <div class="offer-price">R$27</div>
-        <p class="offer-install">OU 5x DE R$5,94</p>
-        <div class="offer-timer" id="offer-timer">ESSA OFERTA EXPIRA EM 14:59</div>
-        <a href="https://pay.wiapy.com/ZZt0TqANX3b4" target="_blank" rel="noopener noreferrer" onclick="if(window.fbq)fbq('track','InitiateCheckout');" class="btn-cta">SIM! QUERO MEU PROTOCOLO AGORA</a>
-        <div class="seals">
-          <div>🔒 Compra Segura</div>
-          <div>⚡ Acesso Imediato</div>
-          <div>🛡️ Garantia de 7 dias</div>
+      <h2 class="section-title">Escolha seu acesso ao Protocolo Desinflama 40+</h2>
+      <p class="section-sub" style="color:#FF6B00;font-weight:800;">🔥 ESSA OFERTA TERMINA HOJE</p>
+      <div class="offer-grid">
+        <div class="offer-basic">
+          <div>
+            <p class="offer-kicker" style="color:#4b5563;">PLANO ESSENCIAL</p>
+            <h3 style="font-size:20px;font-weight:800;color:#000;margin-bottom:14px;">Comece o protocolo hoje</h3>
+            <ul class="offer-includes" style="border-bottom-color:#e5e7eb;">
+              <li><span>✅</span><span>Guia Completo de 21 Dias em PDF</span></li>
+              <li><span>✅</span><span>5 Receitas Desinflamantes de 15 min</span></li>
+              <li><span>✅</span><span>Cardápio de 21 Dias + Lista de Compras Pronta</span></li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:700;color:#4b5563;">PAGAMENTO ÚNICO DE</p>
+            <div class="offer-price" style="color:#000000;">R$17</div>
+            <p style="font-size:13px;font-weight:800;color:#FF6B00;margin-bottom:16px;">ESSA OFERTA TERMINA HOJE</p>
+            <button type="button" onclick="openUpgradeModal()" class="btn-basic">QUERO O PLANO DE R$17</button>
+            <div class="seals" style="border-top-color:#e5e7eb;">
+              <div>🔒 Compra Segura</div>
+              <div>⚡ Acesso Imediato</div>
+              <div>🛡️ Garantia de 7 dias</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="offer-box">
+          <div>
+            <p class="offer-kicker">OFERTA PRINCIPAL COMPLETA · MAIS ESCOLHIDA</p>
+            <h3 style="font-size:20px;font-weight:800;color:#000;margin-bottom:14px;">Veja tudo o que você vai levar hoje:</h3>
+            <ul class="offer-includes">
+              <li><span>✅</span><span>Guia Completo de 21 Dias em PDF</span></li>
+              <li><span>✅</span><span>15 Receitas Desinflamantes de 15 min</span></li>
+              <li><span>✅</span><span>Cardápio de 21 Dias + Lista de Compras Pronta</span></li>
+              <li><span>✅</span><span>5 Vídeos de Aplicação Rápida</span></li>
+              <li><span>✅</span><span>Checklist Diário + Bônus Visão e Articulações</span></li>
+              <li><span>🎁</span><span><strong>Bônus 1:</strong> Chá Seca-Barriga da Noite <s style="color:#6b7280;font-size:12px;">(R$47)</s> <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
+              <li><span>🎁</span><span><strong>Bônus 2:</strong> Lista Negra dos 27 Alimentos Que Te Inflamam <s style="color:#6b7280;font-size:12px;">(R$37)</s> <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
+              <li><span>🎁</span><span><strong>Bônus 3:</strong> Protocolo Visão Nítida 40+ <s style="color:#6b7280;font-size:12px;">(R$67)</s> <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
+            </ul>
+          </div>
+          <div>
+            <p class="offer-old">DE <span>R$97</span> POR APENAS</p>
+            <div class="offer-price">R$27</div>
+            <p class="offer-install">OU 5x DE R$5,94</p>
+            <div class="offer-today">🔥 ESSA OFERTA TERMINA HOJE</div>
+            <a href="https://pay.wiapy.com/ZZt0TqANX3b4" target="_blank" rel="noopener noreferrer" onclick="if(window.fbq)fbq('track','InitiateCheckout');" class="btn-cta">SIM! QUERO MEU PROTOCOLO AGORA</a>
+            <div class="seals">
+              <div>🔒 Compra Segura</div>
+              <div>⚡ Acesso Imediato</div>
+              <div>🛡️ Garantia de 7 dias</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section section-rose">
+    <div class="container">
+      <h2 class="section-title">Mulheres reais que destravaram o corpo em poucas semanas</h2>
+      <p class="section-sub">Veja o que alunas de todo o Brasil estão sentindo após aplicar os 21 dias:</p>
+      <div class="testi-grid">
+        <div class="testi-card"><img src="/assets/aistudio/image_c1c70fde.png" alt="Maria, Curitiba" /><p class="quote">"Em 7 dias já desinchei, meu joelho parou de doer"</p><p class="author">Maria, 52, Curitiba</p></div>
+        <div class="testi-card"><img src="/assets/aistudio/image_c0053576.png" alt="Rosana, Belo Horizonte" /><p class="quote">"Minha barriga desinchou e voltei a ter energia"</p><p class="author">Rosana, 47, Belo Horizonte</p></div>
+        <div class="testi-card"><img src="/assets/aistudio/image_cde67709.png" alt="Cleide, Goiânia" /><p class="quote">"Eu achava que era idade, era inflamação"</p><p class="author">Cleide, 58, Goiânia</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="guarantee-box">
         <img src="/src/assets/images/selo_garantia_7dias_1795088984973.jpg" alt="Selo de Garantia 7 Dias" />
@@ -300,7 +346,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-rose">
     <div class="container">
       <h2 class="section-title">Perguntas Frequentes</h2>
       <div class="faq-list">
@@ -324,6 +370,30 @@
     <p>Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como garantia de resultados. Consulte um profissional de saúde.</p>
   </footer>
 
+  <div class="modal-backdrop" id="upgrade-modal" role="dialog" aria-modal="true" aria-labelledby="upgrade-title">
+    <div class="modal-card">
+      <button type="button" class="modal-close" onclick="closeUpgradeModal()" aria-label="Fechar oferta">✕</button>
+      <p style="font-size:12px;font-weight:800;color:#FF6B00;margin-bottom:4px;">ESPERA! CONDIÇÃO ÚNICA SÓ HOJE</p>
+      <h3 id="upgrade-title" style="font-size:22px;font-weight:800;color:#000;line-height:1.25;margin-bottom:8px;">Leve a Oferta Principal Completa por apenas <span style="color:#0E5A3D;">R$23</span>!</h3>
+      <p style="font-size:13px;color:#1f2937;margin-bottom:14px;">Por apenas <strong>R$6 a mais</strong>, você garante o pacote completo de R$27 com todas as 15 receitas, 5 vídeos e os 3 bônus grátis:</p>
+      <ul class="offer-includes" style="font-size:13px;margin-bottom:14px;padding-bottom:14px;">
+        <li><span>✅</span><span>Guia Completo de 21 Dias em PDF</span></li>
+        <li><span>✅</span><span>15 Receitas Desinflamantes de 15 min</span></li>
+        <li><span>✅</span><span>Cardápio de 21 Dias + Lista de Compras Pronta</span></li>
+        <li><span>✅</span><span>5 Vídeos de Aplicação Rápida</span></li>
+        <li><span>✅</span><span>Checklist Diário + Bônus Visão e Articulações</span></li>
+        <li><span>🎁</span><span><strong>Bônus 1:</strong> Chá Seca-Barriga da Noite <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
+        <li><span>🎁</span><span><strong>Bônus 2:</strong> Lista Negra dos 27 Alimentos <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
+        <li><span>🎁</span><span><strong>Bônus 3:</strong> Protocolo Visão Nítida 40+ <strong style="color:#0E5A3D;">GRÁTIS</strong></span></li>
+      </ul>
+      <p style="font-size:14px;font-weight:700;color:#374151;">DE <s style="color:#dc2626;">R$27</s> POR APENAS</p>
+      <div class="offer-price" style="font-size:44px;margin:2px 0;">R$23</div>
+      <p style="font-size:12px;font-weight:800;color:#FF6B00;margin-bottom:14px;">🔥 ESSA OFERTA TERMINA HOJE</p>
+      <a href="https://pay.wiapy.com/LMJNfkzbm9JD" target="_blank" rel="noopener noreferrer" onclick="if(window.fbq)fbq('track','InitiateCheckout');" class="btn-cta" style="min-height:54px;font-size:16px;">SIM! GARANTIR OFERTA COMPLETA POR R$23</a>
+      <a href="https://pay.wiapy.com/1lXa8HQbPZcz" target="_blank" rel="noopener noreferrer" onclick="if(window.fbq)fbq('track','InitiateCheckout');" style="display:inline-block;margin-top:12px;font-size:12px;font-weight:600;color:#374151;text-decoration:underline;">Não, obrigado. Quero continuar só com o plano de R$17</a>
+    </div>
+  </div>
+
   <script>
     function togglePain(btn) {
       btn.classList.toggle('active');
@@ -336,16 +406,12 @@
     function toggleFaq(btn) {
       btn.parentElement.classList.toggle('open');
     }
-    (function () {
-      var secs = 14 * 60 + 59;
-      var timerEl = document.getElementById('offer-timer');
-      setInterval(function () {
-        secs = secs > 0 ? secs - 1 : 14 * 60 + 59;
-        var m = String(Math.floor(secs / 60)).padStart(2, '0');
-        var s = String(secs % 60).padStart(2, '0');
-        timerEl.textContent = 'ESSA OFERTA EXPIRA EM ' + m + ':' + s;
-      }, 1000);
-    })();
+    function openUpgradeModal() {
+      document.getElementById('upgrade-modal').classList.add('open');
+    }
+    function closeUpgradeModal() {
+      document.getElementById('upgrade-modal').classList.remove('open');
+    }
   </script>
 </body>
 </html>
