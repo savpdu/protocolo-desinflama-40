@@ -1,0 +1,49 @@
+name: Importar novo site Ritual Desincha
+on:
+  push:
+    paths:
+      - 'novo-site-vercel.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Extrair novo site separado da pagina original
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s novo-site-vercel.zip
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          from html.parser import HTMLParser
+          target=Path('novo-ritual-desincha')
+          with ZipFile('novo-site-vercel.zip') as z:
+              names=set(z.namelist())
+              assert 'index.html' in names
+              class Images(HTMLParser):
+                  def __init__(self):super().__init__();self.paths=[]
+                  def handle_starttag(self,t,attrs):
+                      if t=='img':
+                          src=dict(attrs).get('src','')
+                          if src.startswith('/src/assets/') or src.startswith('/assets/'):
+                              self.paths.append(src.lstrip('/'))
+              p=Images();p.feed(z.read('index.html').decode('utf8'))
+              missing=[x for x in p.paths if x not in names]
+              assert len(set(p.paths))==14 and not missing, f'Imagens ausentes: {missing}'
+              for path in ['index.html',*sorted(set(p.paths))]:
+                  dest=target/path
+                  dest.parent.mkdir(parents=True,exist_ok=True)
+                  dest.write_bytes(z.read(path))
+              print(f'Importado: {len(set(p.paths))} imagens')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add novo-ritual-desincha
+          git commit -m "Importar novo Ritual Desincha com imagens proprias" || exit 0
+          git push
