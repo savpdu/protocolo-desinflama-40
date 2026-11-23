@@ -1,0 +1,44 @@
+name: Atualizar fotos Ritual Desincha 40
+on:
+  push:
+    paths:
+      - 'atualizacao_imagens_ritual_desincha.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  importar-fotos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Substituir somente as duas fotos solicitadas
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          archive=Path('atualizacao_imagens_ritual_desincha.zip')
+          assert archive.exists(), 'ZIP nao encontrado'
+          folder=Path('novo-ritual-desincha')
+          names=[
+              'src/assets/images/marcia_hero_antes_depois_1795444014827.webp',
+              'src/assets/images/marcia_solucao_video_1795444013775.webp',
+          ]
+          with ZipFile(archive) as z:
+              assert set(z.namelist())==set(names), 'Conteudo inesperado no ZIP'
+              for name in names:
+                  dest=folder/name
+                  assert dest.exists(), 'Imagem original nao encontrada: '+name
+                  data=z.read(name)
+                  assert data.startswith(b'RIFF') and data[8:12]==b'WEBP', 'Arquivo WebP invalido'
+                  dest.write_bytes(data)
+                  print('Atualizada',str(dest),len(data))
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add novo-ritual-desincha/src/assets/images
+          git commit -m 'Substituir duas fotos da pagina Ritual Desincha 40' || exit 0
+          git push
